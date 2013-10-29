@@ -31,6 +31,10 @@ ifeq ($(mac_sdk_version),10.9)
 local_cflags_for_slang += -Wno-nested-anon-types -Wno-unused-private-field
 endif
 
+ifeq ($(TARGET_CPU_VARIANT),arm11)
+local_cflags_for_slang += -DTARGET_CPU_VARIANT_ARM11
+endif
+
 ifeq "REL" "$(PLATFORM_VERSION_CODENAME)"
   RS_VERSION := $(PLATFORM_SDK_VERSION)
 else
