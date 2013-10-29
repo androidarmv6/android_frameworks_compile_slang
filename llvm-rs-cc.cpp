@@ -166,7 +166,11 @@ class RSCCOptions {
   RSCCOptions() {
     mOutputType = slang::Slang::OT_Bitcode;
     // Triple/CPU/Features must be hard-coded to our chosen portable ABI.
+#if defined(TARGET_CPU_VARIANT_ARM11)
+    mTriple = "armv6-none-linux-gnueabi";
+#else
     mTriple = "armv7-none-linux-gnueabi";
+#endif
     mCPU = "";
     slangAssert(mFeatures.empty());
     mFeatures.push_back("+long64");
